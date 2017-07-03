@@ -1,4 +1,4 @@
-ompiled source #
+# Compiled source #
 ###################
 *.com
 *.class
@@ -40,5 +40,11 @@ tmtagsHistory
 *.sublime-workspace
 .bundle
 
-# Settings
-private_settings.txt
+# Settings #
+############
+settings_private.py
+
+# SASS and CSS#
+###############
+/.sass-cache/*
+.css.map

@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth.decorators import login_required
-from .forms import UserForm, RegisterForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
+
+from .forms import UserForm, RegisterForm
 
 
 def index(request):
@@ -66,18 +67,3 @@ def register(request):
         return HttpResponseRedirect('/welcome/')
 
     return render(request, 'accounts/register.html', {'form': form})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

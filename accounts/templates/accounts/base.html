@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}"/>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}"/>
+  <meta charset="UTF-8">
+  <title>Title</title>
 </head>
 <body>
-<header>GOOGLE Maps Api - Welcome {{ user.username }}
-</header>
-{% block content %}
+  <header>GOOGLE Maps Api - Welcome {{ user.username }}</header>
 
-{% endblock content %}
+  {% block content %}
 
-<footer>Copyright &copy; Boris Besker</footer>
+  {% endblock content %}
+
+  <footer>Copyright &copy; Boris Besker</footer>
 
 </body>
 </html>

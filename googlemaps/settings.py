@@ -19,14 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'e9hw&2=6@54i8y&il#z$4g1%ri8)53cxa+87hge%8m&vmxf_v0'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -68,22 +61,27 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'googlemaps.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_name',
+        'NAME': 'database_name',
         'USER': 'username',
-        'PASSWORD': 'user_password',
+        'PASSWORD': 'password',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '',
     }
 }
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'your_key'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+WSGI_APPLICATION = 'googlemaps.wsgi.application'
 
 
 # Password validation
@@ -125,4 +123,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/'
-
