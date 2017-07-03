@@ -50,20 +50,3 @@ def logout_view(request):
 def welcome(request):
 
     return render(request, 'accounts/welcome.html')
-
-
-def register(request):
-
-    form = RegisterForm(request.POST or None)
-
-    if request.method == 'POST':
-        if form.is_valid():
-            user = form.save(commit=False)
-            password = form.cleaned_data['password']
-            user.set_password(password)
-            user.save()
-
-    if request.user.is_authenticated():
-        return HttpResponseRedirect('/welcome/')
-
-    return render(request, 'accounts/register.html', {'form': form})
