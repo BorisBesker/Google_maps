@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
-from .forms import UserForm, RegisterForm
+from .forms import UserForm
 
 
 def index(request):
