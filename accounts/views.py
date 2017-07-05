@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 
 from .forms import UserForm
@@ -26,11 +26,11 @@ def login_view(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponseRedirect('/welcome/')
+                    return JsonResponse({"message": "Login successful"})
                 else:
-                    return HttpResponse("Your account has been disabled")
+                    return JsonResponse({"message": "Account disabled"})
             else:
-                return HttpResponse("Ivalid credentialess")
+                return JsonResponse({"message": "Invalid credentials"})
 
     if request.user.is_authenticated():
         return HttpResponseRedirect('/welcome/')

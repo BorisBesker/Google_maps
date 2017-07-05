@@ -69,3 +69,10 @@ footer {
     left: 0;
     right: 0;
 }
+
+.alert {
+    text-align: center;
+    padding: 14px 20px;
+    background-color: #f44336;
+    color: white;
+}

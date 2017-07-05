@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
 
   {% load static %}
 
   <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="{% static 'accounts/js/login.js' %}"></script>
+
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Google maps API</title>
+
 </head>
+
 <body>
+
   <header>GOOGLE Maps Api - Welcome {{ user.username }}</header>
 
   {% block content %}
@@ -18,4 +26,5 @@
   <footer>Copyright &copy; Boris Besker</footer>
 
 </body>
+
 </html>
