@@ -7,7 +7,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic.base import TemplateView
 
-from .forms import UserForm
+from .forms import RegisterForm, UserForm
 
 
 class Login(View):
@@ -22,6 +22,28 @@ class Login(View):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
+            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
+            login(request, user)
+            return HttpResponseRedirect(reverse('welcome'))
+
+        return render(request, self.template_name, {'form': form})
+
+
+class Register(View):
+    form_class = RegisterForm
+    template_name = 'accounts/registration.html'
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            return HttpResponseRedirect(reverse('welcome'))
+        return render(request, self.template_name, {'form': self.form_class()})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             login(request, user)
             return HttpResponseRedirect(reverse('welcome'))
