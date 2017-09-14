@@ -27,11 +27,11 @@ DEBUG = False
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts.apps.AccountsConfig',
+    'google_embedded_maps.apps.AccountsConfig',
+    'google_embedded_maps.apps.GoogleEmbeddedMapsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
