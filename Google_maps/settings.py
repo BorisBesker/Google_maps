@@ -30,8 +30,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'google_embedded_maps.apps.AccountsConfig',
-    'google_embedded_maps.apps.GoogleEmbeddedMapsConfig',
+    'google_embedded_maps',
+    'google_embedded_maps',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
