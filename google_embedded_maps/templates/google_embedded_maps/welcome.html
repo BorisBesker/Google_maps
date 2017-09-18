@@ -6,13 +6,34 @@
   <link rel="stylesheet" type="text/css" href="{% static 'google_embedded_maps/css/welcome_template.css' %}"/>
 {% endblock %}
 
+{% block javascript %}
+  {% load static %}
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY2kqCa1Yk3_9xOICSwiX24W1avKFpvn0&libraries=places"></script>>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="{% static 'google_embedded_maps/js/google_maps_autocomplete.js' %}"></script>
+  <script type="text/javascript" src="{% static 'google_embedded_maps/js/welcome.js' %}"></script>
+{% endblock %}
+
 {% block content %}
-  <p>Welcome to Google maps API</p>
   <a href="{% url 'account_logout' %}"><p id="link">LOGOUT<p></a>
+
+  <div class="searchbox">
+  <label>Search Country</label>
+    <input type="text" name="country" id="country" class="form-control input-lg" autocomplete="off" placeholder="Type Country Name" />
+    <button id="searchButton" type="button">Search</button>
+  </div>
+
   <iframe
     width="600" height="450"
     frameborder="0" style="border:0"
-    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDY2kqCa1Yk3_9xOICSwiX24W1avKFpvn0
-    &q=Space+Needle,Seattle+WA" allowfullscreen>
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDY2kqCa1Yk3_9xOICSwiX24W1avKFpvn0&q=Assam, India" allowfullscreen>
   </iframe>
+
+  <div class="textarea">
+    <textarea title="textarea" rows="5" cols="80" id="x13" name="mytextarea">Generate my code here</textarea>
+    <button id="genButton" class="textareaButton" type="button">Generate code</button>
+    <button id = "copyButton" class="textareaButton" type="button">Copy to clipboard</button>
+  </div>
+
 {% endblock %}
