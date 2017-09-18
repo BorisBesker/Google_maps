@@ -1,14 +1,14 @@
-{% extends "accounts/base.html" %}
+{% extends "account/base.html" %}
 
 {% block stylesheets %}
   {% load static %}
 
-  <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/welcome_template.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'google_embedded_maps/css/welcome_template.css' %}"/>
 {% endblock %}
 
 {% block content %}
   <p>Welcome to Google maps API</p>
-  <a href="{% url 'logout' %}"><p id="link">LOGOUT<p></a>
+  <a href="{% url 'account_logout' %}"><p id="link">LOGOUT<p></a>
   <iframe
     width="600" height="450"
     frameborder="0" style="border:0"
