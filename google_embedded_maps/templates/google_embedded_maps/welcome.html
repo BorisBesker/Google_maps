@@ -9,18 +9,18 @@
 {% block javascript %}
   {% load static %}
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY2kqCa1Yk3_9xOICSwiX24W1avKFpvn0&libraries=places"></script>>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY2kqCa1Yk3_9xOICSwiX24W1avKFpvn0&libraries=places"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="{% static 'google_embedded_maps/js/google_maps_autocomplete.js' %}"></script>
   <script type="text/javascript" src="{% static 'google_embedded_maps/js/welcome.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-  <a href="{% url 'account_logout' %}"><p id="link">LOGOUT<p></a>
+  <a href="{% url 'account_logout' %}"><p id="logout_link">LOGOUT<p></a>
 
   <div class="searchbox">
-  <label>Search Country</label>
-    <input type="text" name="country" id="country" class="form-control input-lg" autocomplete="off" placeholder="Type Country Name" />
+    <label>Search Country</label>
+    <input id="locationTextField" type="text" size="50">
     <button id="searchButton" type="button">Search</button>
   </div>
 
@@ -35,5 +35,4 @@
     <button id="genButton" class="textareaButton" type="button">Generate code</button>
     <button id = "copyButton" class="textareaButton" type="button">Copy to clipboard</button>
   </div>
-
 {% endblock %}
