@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     $("#genButton").click(function() {
-        var text = $("iframe").attr('src');
+        var text = $("iframe")[0].outerHTML;
         $('textarea').val(text);
     });
 
