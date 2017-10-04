@@ -1,5 +1,48 @@
 $(document).ready(function() {
 
+    //Generates the src of iFrame based on users input
+    function generateSrc(mode, options) {
+        let currentParams = {};
+        let params = {};
+        var src_iframe = $("iframe").attr("src");
+        var getQueryString = src_iframe.match(/&(.+)/); // Gets querystring after APIkey
+        var searchParams = new URLSearchParams(getQueryString[1]);
+
+        // Converts querystring into js object for manipulating
+        for (let key of searchParams.keys()) {
+            currentParams[key] = searchParams.get(key);
+        }
+
+        if (mode === null) {
+            mode = getCurrentMode();
+        } else {
+            if (mode === 'Place mode') {
+                mode = 'place'
+            }
+            if (mode === 'Search mode') {
+                mode = 'search'
+            }
+        }
+
+        Object.assign(currentParams, options);
+        // Converts js object into string to form the URL
+        params = $.param(currentParams);
+        return 'https://www.google.com/maps/embed/v1/' + mode + '?key=AIzaSyDY2kqCa1Yk3_9xOICSwiX24W1avKFpvn0&' + params;
+    }
+
+    // Gets the current mode in the src iFrame if (only) place is changed
+    function getCurrentMode() {
+        var src_iframe = $("iframe").attr("src");
+        var mode = src_iframe.substring(37, 43);
+        if (mode.substring(0,5) === 'place') {
+            mode = 'place'
+        }
+        if (mode.substring(0,5) === 'searc') {
+            mode = 'search'
+        }
+        return mode;
+    }
+
     $("#genButton").click(function() {
         var text = $("iframe")[0].outerHTML;
         $('textarea').val(text);
@@ -7,14 +50,8 @@ $(document).ready(function() {
 
     $("select").change(function () {
         var search_mode = $( "select option:selected" ).val();
-        var src_iframe = $("iframe").attr("src");
-        if (search_mode === 'Place mode') {
-            src_iframe = src_iframe.replace("search", "place");
-        }
-        if (search_mode === 'Search mode') {
-            src_iframe = src_iframe.replace("place", "search");
-        }
-        $("iframe").attr("src", src_iframe);
+        $("iframe").attr("src", generateSrc(search_mode));
+        console.log(search_mode);
     });
 
     $("#copyButton").click(function() {
@@ -28,17 +65,10 @@ $(document).ready(function() {
         }
     });
 
-
     $("#searchButton").click(function() {
         var place = $("#locationTextField").val();
-        $("iframe").attr("src", changeMode(place));
+        var options = {q: place};
+        $("iframe").attr("src", generateSrc(null, {q: place}));
     });
-
-    function changeMode(place) {
-        var src_iframe = $("iframe").attr("src");
-        get_location = src_iframe.match(/q=(.+)/);
-        src_iframe = src_iframe.replace(get_location[1], place);
-        return src_iframe
-    }
 
 });
