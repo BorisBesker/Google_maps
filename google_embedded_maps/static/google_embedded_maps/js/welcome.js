@@ -13,16 +13,7 @@ $(document).ready(function() {
             currentParams[key] = searchParams.get(key);
         }
 
-        if (mode === null) {
-            mode = getCurrentMode();
-        } else {
-            if (mode === 'Place mode') {
-                mode = 'place'
-            }
-            if (mode === 'Search mode') {
-                mode = 'search'
-            }
-        }
+        mode = (mode) ? mode : getCurrentMode();
 
         Object.assign(currentParams, options);
         // Converts js object into string to form the URL
@@ -51,7 +42,6 @@ $(document).ready(function() {
     $("select").change(function () {
         var search_mode = $( "select option:selected" ).val();
         $("iframe").attr("src", generateSrc(search_mode));
-        console.log(search_mode);
     });
 
     $("#copyButton").click(function() {
